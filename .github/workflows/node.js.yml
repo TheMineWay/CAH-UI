@@ -27,9 +27,13 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
+      working-directory: ./app
     - run: npm test
+      working-directory: ./app
     - run: npm run build
+      working-directory: ./app
     - name: Deploy
+      working-directory: ./app
       run: |
         git config --global user.name $user_name
         git config --global user.email $user_email
