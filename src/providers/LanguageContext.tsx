@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import configurei18n, { getDefaultLanguage, Language } from "../i18n/configure_i18n";
 
 type Props = {
@@ -8,6 +8,11 @@ type Props = {
 type LanguageContextState = { language: Language, setLanguage: (language: Language) => void };
 
 const LanguageContext = React.createContext<LanguageContextState | null>(null);
+
+export function useLanguage() {
+    const languageContext = useContext(LanguageContext);
+    return languageContext!;
+}
 
 export default function LanguageProvider(props: Props) {
 
