@@ -22,19 +22,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
-      working-directory: ./app
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-      working-directory: ./app
     - run: npm test
-      working-directory: ./app
     - run: npm run build
-      working-directory: ./app
     - name: Deploy
-      working-directory: ./app
       run: |
         git config --global user.name $user_name
         git config --global user.email $user_email
