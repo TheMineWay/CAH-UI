@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import configurei18n, { getDefaultLanguage, Language } from "../i18n/configure_i18n";
 
 type Props = {
@@ -16,11 +16,12 @@ export function useLanguage() {
 
 export default function LanguageProvider(props: Props) {
 
-    const [language, setLanguage] = useState<Language>(getDefaultLanguage());
+    const [language, setLanguageState] = useState<Language>(getDefaultLanguage());
 
-    useEffect(() => {
-        configurei18n(language);
-    }, [language]);
+    const setLanguage = async (language: Language) => {
+        await configurei18n(language);
+        setLanguageState(language);
+    }
 
     return (
         <LanguageContext.Provider
