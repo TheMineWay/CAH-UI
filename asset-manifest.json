@@ -1,17 +1,16 @@
 {
   "files": {
-    "main.css": "/CAH-UI/static/css/main.073c9b0a.css",
-    "main.js": "/CAH-UI/static/js/main.7115d9f9.js",
+    "main.css": "/CAH-UI/static/css/main.0b4e74b4.css",
+    "main.js": "/CAH-UI/static/js/main.adfaefb0.js",
     "static/js/787.c1112931.chunk.js": "/CAH-UI/static/js/787.c1112931.chunk.js",
     "service-worker.js": "/CAH-UI/service-worker.js",
-    "static/media/logo.svg": "/CAH-UI/static/media/logo.103b5fa18196d5665a7e12318285c916.svg",
     "index.html": "/CAH-UI/index.html",
-    "main.073c9b0a.css.map": "/CAH-UI/static/css/main.073c9b0a.css.map",
-    "main.7115d9f9.js.map": "/CAH-UI/static/js/main.7115d9f9.js.map",
+    "main.0b4e74b4.css.map": "/CAH-UI/static/css/main.0b4e74b4.css.map",
+    "main.adfaefb0.js.map": "/CAH-UI/static/js/main.adfaefb0.js.map",
     "787.c1112931.chunk.js.map": "/CAH-UI/static/js/787.c1112931.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.7115d9f9.js"
+    "static/css/main.0b4e74b4.css",
+    "static/js/main.adfaefb0.js"
   ]
 }
