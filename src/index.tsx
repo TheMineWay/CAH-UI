@@ -5,10 +5,14 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import configurei18n from './i18n/configure_i18n';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+configurei18n();
+
 root.render(
   <React.StrictMode>
     <App />
