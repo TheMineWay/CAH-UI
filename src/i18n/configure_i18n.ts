@@ -3,7 +3,15 @@ import { initReactI18next } from 'react-i18next';
 
 import en from './locales/en.json';
 
-export default async function configurei18n() {
+export enum Language {
+    en = 'en',
+}
+
+export function getDefaultLanguage(): Language {
+    return Language.en;
+}
+
+export default async function configurei18n(language?: Language) {
     const resources: Resource = {
         en: {
             translation: en,
@@ -14,7 +22,7 @@ export default async function configurei18n() {
     .use(initReactI18next)
     .init({
         resources,
-        lng: 'en',
+        lng: language ?? getDefaultLanguage(),
         fallbackLng: 'en',
     });
 }
