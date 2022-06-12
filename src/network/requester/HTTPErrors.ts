@@ -2,6 +2,7 @@ export default class HttpError {
     code: number;
     message?: string;
     payload?: string;
+    section = 'http';
 
     constructor(code: number, opts?: {
         message?: string;
