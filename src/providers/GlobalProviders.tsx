@@ -1,3 +1,4 @@
+import AuthProvider from "./AuthContext";
 import LanguageProvider from "./LanguageContext";
 
 type Props = {
@@ -6,8 +7,10 @@ type Props = {
 
 export default function GlobalProviders(props: Props) {
     return (
-        <LanguageProvider>
-            {props.children}
-        </LanguageProvider>
+        <AuthProvider>
+            <LanguageProvider>
+                {props.children}
+            </LanguageProvider>
+        </AuthProvider>
     );
 }
