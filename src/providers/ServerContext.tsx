@@ -54,4 +54,5 @@ export type ServerInfo = {
         number: string;
         isStable: boolean;
     };
+    protocol: 'http' | 'https';
 }

@@ -5,6 +5,21 @@
                 "actions": {
                     "Connect": "Connect"
                 }
+            },
+            "stateDisplay": {
+                "states": {
+                    "fetching": {
+                        "Title": "Fetching server info..."
+                    }
+                },
+                "warningsList": {
+                    "warnings": {
+                        "protocol": {
+                            "Title": "Unsafe protocol",
+                            "Description": "You will be using an unsafe protocol to connect to the server. All transmited data (such as passwords, tokens, etc) will be visible for everyone on the network."
+                        }
+                    }
+                }
             }
         }
     },

@@ -27,7 +27,7 @@ export default async function requester<T>(method: RequestMethod, url: string, o
         }
     });
 
-    if (!([200, 202].includes(axiosResponse.status))) {
+    if (!([200, 202, 304].includes(axiosResponse.status))) {
         // An error has occurred
         throw new HttpError(axiosResponse.status);
     }
