@@ -1,9 +1,9 @@
-import { Form } from "antd";
+import { Col, Form, Row } from "antd";
 import { useForm } from "antd/lib/form/Form";
 import IPFormItem from "../shared/form/IPFormItem";
 
 export default function ServerConfigForm() {
-    
+
     const [form] = useForm();
 
     return (
@@ -11,9 +11,19 @@ export default function ServerConfigForm() {
             form={form}
             layout='vertical'
         >
-            <IPFormItem
-                name="ip"
-            />
+            <Row
+                gutter={[12, 12]}
+            >
+                <Col
+                    xs={24}
+                    md={12}
+                >
+                    <IPFormItem
+                        name="ip"
+                        showhHelp
+                    />
+                </Col>
+            </Row>
         </Form>
     );
 }
