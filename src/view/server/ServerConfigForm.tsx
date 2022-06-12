@@ -6,25 +6,31 @@ import { t } from "i18next";
 import IPFormItem from "../shared/form/IPFormItem";
 import IPPortFormItem from "../shared/form/IPPortFormItem";
 
-type FormValues = {
+export type ServerConfigFormValues = {
     address: string;
     port?: string;
     protocol: 'http' | 'https';
 }
 
-export default function ServerConfigForm() {
+type Props = {
+    setServerProps: (props: ServerConfigFormValues) => void;
+}
 
-    const [form] = useForm<FormValues>();
+export default function ServerConfigForm(props: Props) {
 
-    const submit = async (values: FormValues) => {
+    const [form] = useForm<ServerConfigFormValues>();
+
+    const submit = async (values: ServerConfigFormValues) => {
 
         const port = values.port ?? '4000';
 
         if(!isIP(values.address) || !isPort(port)) throw new Error();
+
+        props.setServerProps(values);
     }
 
     return (
-        <Form<FormValues>
+        <Form<ServerConfigFormValues>
             form={form}
             layout='vertical'
             onFinish={submit}

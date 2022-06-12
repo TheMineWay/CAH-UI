@@ -25,14 +25,15 @@ export default function useRequest<T>(opts: UseRequestsOpts) {
         authState,
     } = useAuthState();
 
-    const request = async (requestOpts: {
-        body: any;
+    const request = async (requestOpts?: {
+        body?: any;
+        params?: {[key: string]: string};
     }) => {
         setLoading(true);
         try {
             const host = opts.overrideHost || server?.address;
-            const protocol = opts.overrideProtocol || server?.protocol;
-            const port = opts.overridePort || server?.port;
+            const protocol = opts.overrideProtocol || server?.protocol || 'https';
+            const port = opts.overridePort || server?.port || "4000";
 
             if(!host || !protocol || !port) throw new Error(); // <-- There must be a server
 
@@ -40,7 +41,7 @@ export default function useRequest<T>(opts: UseRequestsOpts) {
 
             const res = await requester<T>(opts.method, url, {
                 authToken: authState ?? undefined,
-                body: requestOpts.body,
+                body: requestOpts?.body,
             });
 
             setAxiosResponse(res);
@@ -56,7 +57,7 @@ export default function useRequest<T>(opts: UseRequestsOpts) {
 
     return {
         axiosResponse,
-        data: axiosResponse?.data,
+        response: axiosResponse?.data,
         loading,
         request,
         clear,

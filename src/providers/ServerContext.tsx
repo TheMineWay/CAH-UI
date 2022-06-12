@@ -47,3 +47,11 @@ export default function ServerProvider(props: Props) {
         </ServerContext.Provider>
     );
 }
+
+export type ServerInfo = {
+    port: string;
+    version: {
+        number: string;
+        isStable: boolean;
+    };
+}
