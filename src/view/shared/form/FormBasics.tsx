@@ -1,4 +1,4 @@
-import { Rule } from "antd/lib/form";
+import Form, { Rule } from "antd/lib/form";
 import { ValidateStatus } from "antd/lib/form/FormItem";
 import { ChangeEventHandler, useState } from "react";
 
@@ -21,6 +21,12 @@ export function useFormValidator(validator: (v: any) => boolean, opts?: {
     }
 
     const validate = (value: any) => {
+
+        if(!value) {
+            setValidationStatus('');
+            return;
+        }
+
         const valid = validator(value);
         if(valid) {
             setValidationStatus('success');
@@ -29,11 +35,32 @@ export function useFormValidator(validator: (v: any) => boolean, opts?: {
         }
     }
 
-    const help = (opts?.errorMessage && validationStatus === 'error') && opts.errorMessage;
+    const help = (opts?.errorMessage && validationStatus === 'error') ? opts.errorMessage : undefined;
 
     return {
         validationStatus,
         onInputChange,
         help,
     };
+}
+
+type Props = FormGenericTypes & {
+    children: JSX.Element;
+    help?: string;
+    validateStatus?: ValidateStatus;
+}
+
+export default function BaseFormItem(props: Props) {
+    return (
+        <Form.Item
+            label={props.label}
+            required={props.required}
+            rules={props.rules}
+            name={props.name}
+            help={props.help}
+            validateStatus={props.validateStatus}
+        >
+            {props.children}
+        </Form.Item>
+    );
 }

@@ -1,28 +1,29 @@
-import { Form, Input } from "antd";
-import { FormGenericTypes, useFormValidator } from "./FormBasics";
+import { Input } from "antd";
+import BaseFormItem, { FormGenericTypes, useFormValidator } from "./FormBasics";
 import { isIP } from 'class-validator';
+import { t } from "i18next";
 
 type Props = FormGenericTypes & {
-
+    placeholder?: string;
 }
 
 export default function IPFormItem(props: Props) {
-
+    
     const {
         onInputChange,
         validationStatus,
         help,
     } = useFormValidator(isIP, {
-        errorMessage: 'IP no válida'
+        errorMessage: t('common.forms.ipAddress.errors.ProvideAValidIP'),
     });
 
     return (
-        <Form.Item
-            label={props.label}
+        <BaseFormItem
             name={props.name}
+            label={props.label}
+            rules={props.rules}
             required={props.required}
             validateStatus={validationStatus}
-            rules={props.rules}
             help={help}
         >
             <Input
@@ -30,7 +31,8 @@ export default function IPFormItem(props: Props) {
                 maxLength={64}
                 minLength={7}
                 onChange={onInputChange}
+                placeholder={props.placeholder ?? '192.168.0.1'}
             />
-        </Form.Item>
+        </BaseFormItem>
     );
 }

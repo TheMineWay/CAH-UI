@@ -1,17 +1,13 @@
 {
     "view": {
-        "serverConfig": {
-            "form": {
-                "fields": {
-                    "ip": {
-                        "Label": "IP address",
-                        "rules": {
-                            "Required": "Please, provide an IP address"
-                        }
-                    },
-                    "port": {
-                        "Label": "Port"
-                    }
+        "serverConfig": {}
+    },
+    "common": {
+        "forms": {
+            "ipAddress": {
+                "Label": "IP address",
+                "errors": {
+                    "ProvideAValidIP": "Please, provide a valid IP address"
                 }
             }
         }
