@@ -7,25 +7,24 @@ import IPFormItem from "../shared/form/IPFormItem";
 import IPPortFormItem from "../shared/form/IPPortFormItem";
 
 type FormValues = {
-    ip: string;
+    address: string;
     port?: string;
+    protocol: 'http' | 'https';
 }
 
 export default function ServerConfigForm() {
 
     const [form] = useForm<FormValues>();
 
-    const submit = (values: FormValues) => {
+    const submit = async (values: FormValues) => {
 
         const port = values.port ?? '4000';
 
-        if(!isIP(values.ip) || !isPort(port)) throw new Error();
-
-        // Submit
+        if(!isIP(values.address) || !isPort(port)) throw new Error();
     }
 
     return (
-        <Form
+        <Form<FormValues>
             form={form}
             layout='vertical'
             onFinish={submit}
@@ -38,7 +37,7 @@ export default function ServerConfigForm() {
                     md={16}
                 >
                     <IPFormItem
-                        name="ip"
+                        name="address"
                         showHelp
                         required
                     />

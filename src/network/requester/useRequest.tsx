@@ -8,6 +8,8 @@ type UseRequestsOpts = {
     path: string;
     method: RequestMethod;
     overrideHost?: string;
+    overrideProtocol?: 'http' | 'https';
+    overridePort?: string;
 }
 
 export default function useRequest<T>(opts: UseRequestsOpts) {
@@ -23,14 +25,18 @@ export default function useRequest<T>(opts: UseRequestsOpts) {
         authState,
     } = useAuthState();
 
-    const fetch = async (requestOpts: {
+    const request = async (requestOpts: {
         body: any;
     }) => {
         setLoading(true);
         try {
-            if(!server?.address) throw new Error(); // <-- There must be a server
             const host = opts.overrideHost || server?.address;
-            const url = `https://${host}/${opts.path}`;
+            const protocol = opts.overrideProtocol || server?.protocol;
+            const port = opts.overridePort || server?.port;
+
+            if(!host || !protocol || !port) throw new Error(); // <-- There must be a server
+
+            const url = `${protocol}://${host}${server?.port ? (':' + server.port) : ''}/${opts.path}`;
 
             const res = await requester<T>(opts.method, url, {
                 authToken: authState ?? undefined,
@@ -44,10 +50,15 @@ export default function useRequest<T>(opts: UseRequestsOpts) {
         setLoading(false);
     }
 
+    const clear = () => {
+        setAxiosResponse(undefined);
+    }
+
     return {
         axiosResponse,
         data: axiosResponse?.data,
         loading,
-        fetch,
+        request,
+        clear,
     }
 }

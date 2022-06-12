@@ -53,9 +53,9 @@ type Props = FormGenericTypes & {
     validateStatus?: ValidateStatus;
 }
 
-export default function BaseFormItem(props: Props) {
+export default function BaseFormItem<T>(props: Props) {
     return (
-        <Form.Item
+        <Form.Item<T>
             label={props.label}
             required={props.required}
             rules={props.rules}

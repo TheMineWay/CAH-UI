@@ -10,7 +10,7 @@ type Props = FormGenericTypes & {
     showHelp?: boolean;
 }
 
-export default function IPFormItem(props: Props) {
+export default function IPFormItem<T>(props: Props) {
 
     const {
         onInputChange,
@@ -22,7 +22,7 @@ export default function IPFormItem(props: Props) {
     });
 
     return (
-        <BaseFormItem
+        <BaseFormItem<T>
             name={props.name}
             label={props.label ?? t('common.forms.ipAddress.Label')}
             rules={props.rules ?? [

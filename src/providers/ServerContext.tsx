@@ -9,8 +9,9 @@ const ServerContext = React.createContext<{
 
 // Server info
 export type Server = {
-    address: string,
-    port: string,
+    protocol: 'http' | 'https';
+    address: string;
+    port: string;
 }
 
 type Props = {
@@ -27,10 +28,11 @@ export default function ServerProvider(props: Props) {
     const [serverState, setServerState] = useState<Server>();
 
     // Do server check logic
-    const setServer = async (address: string, port?: string) => {
+    const setServer = async (address: string, port?: string, protocol?: 'http' | 'https') => {
         setServerState({
             address,
             port: port ?? '4000',
+            protocol: protocol ?? 'https',
         });
     }
 
