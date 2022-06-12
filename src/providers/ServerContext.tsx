@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 
 const ServerContext = React.createContext<{
     server?: Server,
-    setServer: (address: string) => Promise<void>,
+    setServer: (address: string, port?: string) => Promise<void>,
 }>({
     setServer: async (address: string) => {}
 });
@@ -10,6 +10,7 @@ const ServerContext = React.createContext<{
 // Server info
 export type Server = {
     address: string,
+    port: string,
 }
 
 type Props = {
@@ -26,9 +27,10 @@ export default function ServerProvider(props: Props) {
     const [serverState, setServerState] = useState<Server>();
 
     // Do server check logic
-    const setServer = async (address: string) => {
+    const setServer = async (address: string, port?: string) => {
         setServerState({
             address,
+            port: port ?? '4000',
         });
     }
 
