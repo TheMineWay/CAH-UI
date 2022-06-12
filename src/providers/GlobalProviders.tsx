@@ -1,5 +1,6 @@
 import AuthProvider from "./AuthContext";
 import LanguageProvider from "./LanguageContext";
+import ServerProvider from "./ServerContext";
 
 type Props = {
     children: JSX.Element;
@@ -7,10 +8,12 @@ type Props = {
 
 export default function GlobalProviders(props: Props) {
     return (
-        <AuthProvider>
-            <LanguageProvider>
-                {props.children}
-            </LanguageProvider>
-        </AuthProvider>
+        <ServerProvider>
+            <AuthProvider>
+                <LanguageProvider>
+                    {props.children}
+                </LanguageProvider>
+            </AuthProvider>
+        </ServerProvider>
     );
 }
