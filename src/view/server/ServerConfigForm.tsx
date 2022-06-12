@@ -20,7 +20,7 @@ export default function ServerConfigForm() {
                 >
                     <IPFormItem
                         name="ip"
-                        showhHelp
+                        showHelp
                     />
                 </Col>
             </Row>

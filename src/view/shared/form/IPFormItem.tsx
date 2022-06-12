@@ -7,7 +7,7 @@ import './form.css';
 
 type Props = FormGenericTypes & {
     placeholder?: string;
-    showhHelp?: boolean;
+    showHelp?: boolean;
 }
 
 export default function IPFormItem(props: Props) {
@@ -45,7 +45,7 @@ export default function IPFormItem(props: Props) {
                     placeholder={props.placeholder ?? '10.0.0.1'}
                 />
                 {
-                    props.showhHelp && (
+                    props.showHelp && (
                         <Tooltip
                             title={t('common.forms.ipAddress.Help').toString()}
                         >
