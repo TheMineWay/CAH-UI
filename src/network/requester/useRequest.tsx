@@ -46,6 +46,7 @@ export default function useRequest<T>(opts: UseRequestsOpts) {
 
             setAxiosResponse(res);
         } catch(e: any) {
+            setLoading(false);
             throw e;
         }
         setLoading(false);
