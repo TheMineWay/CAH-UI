@@ -37,7 +37,9 @@ export default function useRequest<T>(opts: UseRequestsOpts) {
 
             if(!host || !protocol || !port) throw new Error(); // <-- There must be a server
 
-            const url = `${protocol}://${host}${server?.port ? (':' + server.port) : ''}/${opts.path}`;
+            const url = `${protocol}://${host}${port ? (':' + port) : ''}/${opts.path}`;
+
+            console.log(url);
 
             const res = await requester<T>(opts.method, url, {
                 authToken: authState ?? undefined,
