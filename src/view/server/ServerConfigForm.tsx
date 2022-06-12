@@ -15,6 +15,7 @@ export type ServerConfigFormValues = {
 
 type Props = {
     setServerProps: (props: ServerConfigFormValues) => void;
+    loading: boolean;
 }
 
 export default function ServerConfigForm(props: Props) {
@@ -78,6 +79,7 @@ export default function ServerConfigForm(props: Props) {
                             icon={<CloudOutlined />}
                             type='primary'
                             htmlType='submit'
+                            loading={props.loading}
                         >
                             {t('view.serverConfig.form.actions.Connect').toString()}
                         </Button>

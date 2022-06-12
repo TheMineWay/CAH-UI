@@ -38,6 +38,7 @@ export default function ServerConfigViewPage() {
             >
                 <ServerConfigForm
                     setServerProps={setServerConfig}
+                    loading={loading}
                 />
             </Card>
         </FormPageContainer>
