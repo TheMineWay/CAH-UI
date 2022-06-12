@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useAuthState } from "../providers/AuthContext";
 import { useServerState } from "../providers/ServerContext";
-import Layout from "../view/layout/Layout";
+import Layout from "../view/shared/layout/Layout";
 import routes from "./routes";
 import UnauthorizedRoute from "./UnauthorizedRoute";
 
