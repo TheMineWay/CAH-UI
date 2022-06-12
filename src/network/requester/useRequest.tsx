@@ -7,7 +7,6 @@ import requester, { RequestMethod } from "./Requester";
 type UseRequestsOpts = {
     path: string;
     method: RequestMethod;
-    doNotAutoFetch?: boolean;
     overrideHost?: string;
 }
 
@@ -24,11 +23,9 @@ export default function useRequest<T>(opts: UseRequestsOpts) {
         authState,
     } = useAuthState();
 
-    useEffect(() => {
-        if(!opts.doNotAutoFetch) fetch();
-    }, []);
-
-    const fetch = async () => {
+    const fetch = async (requestOpts: {
+        body: any;
+    }) => {
         setLoading(true);
         try {
             if(!server?.address) throw new Error(); // <-- There must be a server
@@ -37,6 +34,7 @@ export default function useRequest<T>(opts: UseRequestsOpts) {
 
             const res = await requester<T>(opts.method, url, {
                 authToken: authState ?? undefined,
+                body: requestOpts.body,
             });
 
             setAxiosResponse(res);
@@ -50,6 +48,6 @@ export default function useRequest<T>(opts: UseRequestsOpts) {
         axiosResponse,
         data: axiosResponse?.data,
         loading,
-        refetch: fetch,
+        fetch,
     }
 }
