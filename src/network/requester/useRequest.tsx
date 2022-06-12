@@ -35,7 +35,7 @@ export default function useRequest<T>(opts: UseRequestsOpts) {
             const protocol = opts.overrideProtocol || server?.protocol || 'https';
             const port = opts.overridePort || server?.port || "4000";
 
-            if(!host || !protocol || !port) throw new Error(); // <-- There must be a server
+            if(!host || !protocol || !port) throw new Error("Server props do not permit connection"); // <-- There must be a server
 
             const url = `${protocol}://${host}${port ? (':' + port) : ''}/${opts.path}`;
 
