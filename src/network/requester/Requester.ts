@@ -20,7 +20,6 @@ export default async function requester<T>(method: RequestMethod, url: string, o
         url,
         headers: {
             ...authHeaders,
-            'Access-Control-Allow-Origin': '*'
         },
         data: opts?.body,
         httpAgent: {
