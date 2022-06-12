@@ -1,0 +1,8 @@
+.base-layout {
+    background-color: gainsboro;
+}
+.base-layout > .layout-content {
+    padding: 1em;
+    height: 100%;
+    width: 100%;
+}

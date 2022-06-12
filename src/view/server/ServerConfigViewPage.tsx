@@ -1,18 +1,17 @@
-import { Card, Col, Row } from "antd";
+import { Card } from "antd";
+import FormPageContainer from "../shared/container/FormPageContainer";
 import ServerConfigForm from "./ServerConfigForm";
 
 export default function ServerConfigViewPage() {
     return (
-        <Row
-            justify='center'
+        <FormPageContainer
+            verticalAlign
         >
-            <Col
-                xs={24}
+            <Card
+                hoverable
             >
-                <Card>
-                    <ServerConfigForm/>
-                </Card>
-            </Col>
-        </Row>
+                <ServerConfigForm />
+            </Card>
+        </FormPageContainer>
     );
 }
