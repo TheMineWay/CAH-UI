@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "../view/layout/Layout";
 import routes from "./routes";
 
 export default function RouterComponent() {
@@ -9,7 +10,7 @@ export default function RouterComponent() {
                     routes.map((route) => (
                         <Route
                             path={route.path}
-                            element={route.component}
+                            element={route.disableLayout ? route.component : <Layout>{route.component}</Layout>}
                         />
                     ))
                 }
