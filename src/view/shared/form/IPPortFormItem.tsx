@@ -25,12 +25,6 @@ export default function IPPortFormItem(props: Props) {
         <BaseFormItem
             name={props.name}
             label={props.label ?? t('common.forms.ipPort.Label')}
-            rules={props.rules ?? [
-                {
-                    required: true,
-                    message: t('common.forms.ipPort.errors.Required'),
-                },
-            ]}
             required={props.required}
             validateStatus={validationStatus}
             help={help}

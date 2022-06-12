@@ -15,7 +15,6 @@
             "ipPort": {
                 "Label": "Port",
                 "errors": {
-                    "Required": "Please, provide a port",
                     "ProvideAValidIPPort": "Please, provide a valid port"
                 }
             }

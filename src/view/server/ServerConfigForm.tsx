@@ -22,6 +22,7 @@ export default function ServerConfigForm() {
                     <IPFormItem
                         name="ip"
                         showHelp
+                        required
                     />
                 </Col>
                 <Col
