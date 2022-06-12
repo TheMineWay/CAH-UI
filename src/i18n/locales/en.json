@@ -1,9 +1,18 @@
 {
     "view": {
-        "serverConfig": {}
+        "serverConfig": {
+            "form": {
+                "actions": {
+                    "Connect": "Connect"
+                }
+            }
+        }
     },
     "common": {
         "forms": {
+            "actions": {
+                "Reset": "Reset"
+            },
             "ipAddress": {
                 "Label": "IP address",
                 "errors": {
