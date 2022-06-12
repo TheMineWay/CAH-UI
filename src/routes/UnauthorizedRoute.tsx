@@ -1,6 +1,6 @@
 import { Result } from "antd";
 
-export default function Route404() {
+export default function UnauthorizedRoute() {
     return (
         <div
             style={{
@@ -12,7 +12,7 @@ export default function Route404() {
             }}
         >
             <Result
-                status={'404'}
+                status={'403'}
             />
         </div>
     );
