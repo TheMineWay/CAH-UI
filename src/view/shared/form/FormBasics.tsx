@@ -37,10 +37,13 @@ export function useFormValidator(validator: (v: any) => boolean, opts?: {
 
     const help = (opts?.errorMessage && validationStatus === 'error') ? opts.errorMessage : undefined;
 
+    const inputStatus: 'warning' | 'error' | undefined = validationStatus === 'error' ? 'error' : (validationStatus === 'warning' ? 'warning' : undefined);
+
     return {
         validationStatus,
         onInputChange,
         help,
+        inputStatus,
     };
 }
 
