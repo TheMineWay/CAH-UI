@@ -39,8 +39,6 @@ export default function useRequest<T>(opts: UseRequestsOpts) {
 
             const url = `${protocol}://${host}${port ? (':' + port) : ''}/${opts.path}`;
 
-            console.log(url);
-
             const res = await requester<T>(opts.method, url, {
                 authToken: authState ?? undefined,
                 body: requestOpts?.body,
