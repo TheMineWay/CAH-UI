@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import HttpError from "./HTTPErrors";
 
 type RequestOpts = {
@@ -6,9 +6,9 @@ type RequestOpts = {
     body?: any;
 }
 
-type RequestMethod = 'get' | 'post' | 'delete' | 'put';
+export type RequestMethod = 'get' | 'post' | 'delete' | 'put';
 
-export default async function requester<T>(method: RequestMethod, url: string, opts?: RequestOpts): Promise<T> {
+export default async function requester<T>(method: RequestMethod, url: string, opts?: RequestOpts): Promise<AxiosResponse<T>> {
     const authHeaders: { [k: string]: string } = {}
 
     if (opts?.authToken) {
@@ -29,5 +29,5 @@ export default async function requester<T>(method: RequestMethod, url: string, o
         throw new HttpError(axiosResponse.status);
     }
 
-    return axiosResponse.data as T;
+    return axiosResponse;
 }
