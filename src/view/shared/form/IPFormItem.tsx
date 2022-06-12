@@ -8,7 +8,7 @@ type Props = FormGenericTypes & {
 }
 
 export default function IPFormItem(props: Props) {
-    
+
     const {
         onInputChange,
         validationStatus,
@@ -20,8 +20,13 @@ export default function IPFormItem(props: Props) {
     return (
         <BaseFormItem
             name={props.name}
-            label={props.label}
-            rules={props.rules}
+            label={props.label ?? t('common.forms.ipAddress.Label')}
+            rules={props.rules ?? [
+                {
+                    required: true,
+                    message: t('common.forms.ipAddress.errors.Required'),
+                },
+            ]}
             required={props.required}
             validateStatus={validationStatus}
             help={help}

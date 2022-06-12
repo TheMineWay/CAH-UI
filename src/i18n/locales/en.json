@@ -7,6 +7,7 @@
             "ipAddress": {
                 "Label": "IP address",
                 "errors": {
+                    "Required": "Please, provide an IP address",
                     "ProvideAValidIP": "Please, provide a valid IP address"
                 }
             }
