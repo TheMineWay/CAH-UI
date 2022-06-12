@@ -27,6 +27,9 @@
                     "ProvideAValidIPPort": "Please, provide a valid port"
                 },
                 "Help": "Provide the IP address port. By default it uses the port 4000."
+            },
+            "httpProtocol": {
+                "Label": "Protocol"
             }
         }
     }

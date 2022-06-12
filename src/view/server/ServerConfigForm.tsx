@@ -5,6 +5,7 @@ import { isIP, isPort } from "class-validator";
 import { t } from "i18next";
 import IPFormItem from "../shared/form/IPFormItem";
 import IPPortFormItem from "../shared/form/IPPortFormItem";
+import HttpProtocolFormItem from "../shared/form/ProtocolFormItem";
 
 export type ServerConfigFormValues = {
     address: string;
@@ -24,7 +25,7 @@ export default function ServerConfigForm(props: Props) {
 
         const port = values.port ?? '4000';
 
-        if(!isIP(values.address) || !isPort(port)) throw new Error();
+        if (!isIP(values.address) || !isPort(port)) throw new Error();
 
         props.setServerProps(values);
     }
@@ -39,8 +40,19 @@ export default function ServerConfigForm(props: Props) {
                 gutter={[12, 12]}
             >
                 <Col
-                    xs={24}
-                    md={16}
+                    xs={7}
+                    md={5}
+                    xxl={4}
+                >
+                    <HttpProtocolFormItem
+                        name="protocol"
+                        required
+                    />
+                </Col>
+                <Col
+                    xs={17}
+                    md={11}
+                    xxl={12}
                 >
                     <IPFormItem
                         name="address"
@@ -63,14 +75,14 @@ export default function ServerConfigForm(props: Props) {
                 >
                     <Space>
                         <Button
-                            icon={<CloudOutlined/>}
+                            icon={<CloudOutlined />}
                             type='primary'
                             htmlType='submit'
                         >
                             {t('view.serverConfig.form.actions.Connect').toString()}
                         </Button>
                         <Button
-                            icon={<ReloadOutlined/>}
+                            icon={<ReloadOutlined />}
                             htmlType='reset'
                         >
                             {t('common.forms.actions.Reset').toString()}
