@@ -1,6 +1,5 @@
 import { Input, Tooltip, Button } from "antd";
-import BaseFormItem, { FormGenericTypes, useFormValidator } from "./FormBasics";
-import { isIP } from 'class-validator';
+import BaseFormItem, { FormGenericTypes } from "./FormBasics";
 import { t } from "i18next";
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import './form.css';
@@ -10,46 +9,32 @@ type Props = FormGenericTypes & {
     showHelp?: boolean;
 }
 
-export default function IPFormItem<T>(props: Props) {
-
-    const {
-        onInputChange,
-        validationStatus,
-        help,
-        inputStatus,
-    } = useFormValidator(isIP, {
-        errorMessage: t('common.forms.ipAddress.errors.ProvideAValidIP'),
-    });
-
+export default function AddressFormItem<T>(props: Props) {
     return (
         <BaseFormItem<T>
             name={props.name}
-            label={props.label ?? t('common.forms.ipAddress.Label')}
+            label={props.label ?? t('common.forms.address.Label')}
             rules={props.rules ?? [
                 {
                     required: true,
-                    message: t('common.forms.ipAddress.errors.Required'),
+                    message: t('common.forms.address.errors.Required'),
                 },
             ]}
             required={props.required}
-            validateStatus={validationStatus}
-            help={help}
         >
             <div
                 className="input-group-flex"
             >
                 <Input
-                    status={inputStatus}
                     type={'text'}
                     maxLength={64}
-                    minLength={7}
-                    onChange={onInputChange}
+                    minLength={5}
                     placeholder={props.placeholder ?? '10.0.0.1'}
                 />
                 {
                     props.showHelp && (
                         <Tooltip
-                            title={t('common.forms.ipAddress.Help').toString()}
+                            title={t('common.forms.address.Help').toString()}
                         >
                             <Button
                                 icon={<QuestionCircleOutlined />}

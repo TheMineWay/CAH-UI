@@ -13,13 +13,13 @@
             "actions": {
                 "Reset": "Reset"
             },
-            "ipAddress": {
-                "Label": "IP address",
+            "address": {
+                "Label": "Address",
                 "errors": {
-                    "Required": "Please, provide an IP address",
-                    "ProvideAValidIP": "Please, provide a valid IP address"
+                    "Required": "Please, provide an address",
+                    "ProvideAValidIP": "Please, provide a valid address"
                 },
-                "Help": "Provide an IP address. It can be an IPv4 (192.168.0.1) or IPv6 (2001:0db8:85a3:0000:0000:8a2e:0370:7334)."
+                "Help": "Provide an address. It can be an IPv4 (192.168.0.1), IPv6 (2001:0db8:85a3:0000:0000:8a2e:0370:7334) or a domain name."
             },
             "ipPort": {
                 "Label": "Port",

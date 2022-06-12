@@ -1,9 +1,9 @@
 import { CloudOutlined, ReloadOutlined } from "@ant-design/icons";
 import { Col, Form, Row, Space, Button } from "antd";
 import { useForm } from "antd/lib/form/Form";
-import { isIP, isPort } from "class-validator";
+import { isPort } from "class-validator";
 import { t } from "i18next";
-import IPFormItem from "../shared/form/IPFormItem";
+import AddressFormItem from "../shared/form/AddressFormItem";
 import IPPortFormItem from "../shared/form/IPPortFormItem";
 import HttpProtocolFormItem from "../shared/form/ProtocolFormItem";
 
@@ -25,7 +25,7 @@ export default function ServerConfigForm(props: Props) {
 
         const port = values.port ?? '4000';
 
-        if (!isIP(values.address) || !isPort(port)) throw new Error();
+        if (!isPort(port)) throw new Error();
 
         props.setServerProps(values);
     }
@@ -54,7 +54,7 @@ export default function ServerConfigForm(props: Props) {
                     md={11}
                     xxl={12}
                 >
-                    <IPFormItem
+                    <AddressFormItem
                         name="address"
                         showHelp
                         required
