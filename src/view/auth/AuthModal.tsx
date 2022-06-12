@@ -1,4 +1,5 @@
 import { Modal } from "react-bootstrap";
+import AuthForm from "./AuthForm";
 
 type Props = {
     visible: boolean;
@@ -11,7 +12,9 @@ export default function AuthModal(props: Props) {
             show={props.visible}
             onExit={props.hide}
         >
-
+            <AuthForm
+                onFinish={props.hide}
+            />
         </Modal>
     );
 }
